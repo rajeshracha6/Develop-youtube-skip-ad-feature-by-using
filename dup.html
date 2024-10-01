@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Skip-Ad Feature</title>
+    <style>
+        #video{
+            position: relative;
+            height: 200px;
+            width: 45vh;
+        }
+        #btn{
+            position: relative;
+            top: -130px;
+            margin-left: 39vh;
+            display: none; /* Button hidden initially */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div">
+        <video id="video" src="./video.mp4" controls></video>
+        <p id="para"></p>
+        <button id="btn">Skip</button>
+    </div>
+
+    <script>
+        const video = document.getElementById("video");
+        const para = document.getElementById("para");
+        const button = document.getElementById("btn");
+
+        let count = 5;
+        const timer = setInterval(() => {
+            para.innerHTML = `Skip in ${count}`;
+            count--;
+            if (count < 0) {
+                clearInterval(timer);
+            }
+        }, 1000);  // Corrected to 1000 milliseconds for each second countdown
+
+        setTimeout(() => {
+            para.style.display = "none";  // Hide the countdown after 5 seconds
+            button.style.display = "block";  // Show the skip button after 5 seconds
+        }, 5000);
+
+        button.addEventListener("click", () => {
+            // video.pause();  // Pause the current video before switching
+            video.setAttribute("src", "./video1.mp4");
+            video.play();  // Play the new video
+        });
+
+
+
+        
+    </script>
+
+</body>
+</html>

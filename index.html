@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="./js.js"></script> -->
+    <style>
+      #v {
+        position: relative;
+        
+        
+      }
+      #btn {
+        position: absolute;
+        /* margin-left: 80%;
+        margin-top: -35%; */
+        top: 200px;
+        left: 40vh;
+        display: none;
+      }
+      #para {
+        position: absolute;
+        /* margin-left: 80%;
+        margin-top: -35%; */
+        top: 190px;
+        left: 40vh;
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="v">
+      <video
+        src="./video.mp4"
+        controls
+        autoplay
+        muted
+        height="300px"
+        width="300px"
+      ></video>
+      <p id="para" style="color: yellow"></p>
+      <button id="btn">skip</button>
+    </div>
+
+    <script>
+      video = document.getElementsByTagName("video");
+      div = document.getElementById("v");
+      para = document.getElementById("para");
+      let count = 6;
+      const timer = setInterval(function () {
+        count--;
+        // console. log(count);
+        para.innerHTML = `Skip in ${count}`;
+
+        if (count === 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      button = document.getElementById("btn");
+      setTimeout(() => {
+        para.style.display = "none";
+        button.style.display = "block";
+      }, 6000);
+      button.addEventListener("click", () => {
+        video[0].setAttribute("src", "./video1.mp4");
+        button.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

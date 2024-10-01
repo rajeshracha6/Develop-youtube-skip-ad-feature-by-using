@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube skip-add feature</title>
+    <style>
+      #video {
+        position: relative;
+        height: 200px;
+        width: 45vh;
+      }
+      /* #para{
+
+        } */
+      #btn {
+        position: relative;
+        top: -101px;
+        margin-left: 38vh;
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">
+      <video id="video" src="./video.mp4" controls></video>
+
+      <p id="para"></p>
+      <button id="btn">skip</button>
+    </div>
+
+    <script>
+      const div = document.getElementById("div");
+      const video = document.getElementById("video");
+      const para = document.getElementById("para");
+
+      let count = 6;
+      const timer = setInterval(() => {
+        count--;
+        para.innerHTML = `Skip in ${count}`;
+        if (count === 0) {
+          clearInterval(timer);
+        }
+      }, 6000);
+
+      const button = document.getElementById("btn");
+
+      button.addEventListener("click", () => {
+        video.setAttribute("autoplay", "");
+        video.setAttribute("src", "./video1.mp4");
+        video.play();
+      });
+      
+      setTimeout(() => {
+        para.style.display = "none";
+        button.style.display = "block";
+      }, 6000);
+    </script>
+  </body>
+</html>
